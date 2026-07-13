@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Checklist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app">
+    <div class="app-header">
+      <div class="title-block">
+        <div class="badge">✓</div>
+        <h1>Daily Checklist</h1>
+      </div>
+      <span id="date-tag"></span>
+    </div>
+
+    <div class="input-row">
+      <input type="text" id="task-input" placeholder="Add a task...">
+      <button id="add-btn">+</button>
+    </div>
+
+    <ul id="todo-list">
+      <!-- JS yahan tasks add karega -->
+    </ul>
+
+    <div class="footer-row">
+      <span id="task-count">0 tasks</span>
+      <button id="clear-btn">Clear completed</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
+
+</html>

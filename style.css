@@ -1,0 +1,267 @@
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --accent: #FF6B4A;
+      --accent-glow: rgba(255, 107, 74, 0.35);
+      --ink: #EDEEF5;
+      --ink-dim: #9497AC;
+      --glass: rgba(255, 255, 255, 0.06);
+      --glass-border: rgba(255, 255, 255, 0.12);
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(124, 111, 240, 0.35), transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(255, 107, 74, 0.25), transparent 45%),
+        #0E0F16;
+      padding: 24px;
+    }
+
+    .app {
+      width: 400px;
+      max-width: 100%;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      box-shadow:
+        0 24px 60px -12px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      padding: 32px;
+    }
+
+    .app-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 26px;
+    }
+
+    .app-header .title-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), #FFA24A);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 0 6px 16px var(--accent-glow);
+      flex-shrink: 0;
+    }
+
+    .app-header h1 {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.2px;
+    }
+
+    .app-header span {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink-dim);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 5px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      white-space: nowrap;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    #task-input {
+      flex: 1;
+      padding: 13px 16px;
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--ink);
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    #task-input::placeholder {
+      color: var(--ink-dim);
+    }
+
+    #task-input:focus {
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    #add-btn {
+      width: 46px;
+      background: linear-gradient(135deg, var(--accent), #FFA24A);
+      color: #14151C;
+      border: none;
+      border-radius: 12px;
+      font-size: 22px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 8px 20px -6px var(--accent-glow);
+    }
+
+    #add-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -6px var(--accent-glow);
+    }
+
+    #add-btn:active {
+      transform: translateY(0);
+    }
+
+    #todo-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 20px;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+
+    #todo-list::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    #todo-list::-webkit-scrollbar-thumb {
+      background: var(--glass-border);
+      border-radius: 10px;
+    }
+
+    #todo-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      padding: 13px 14px;
+      font-size: 14px;
+      color: var(--ink);
+      transition: background 0.2s ease, transform 0.15s ease;
+      animation: slideIn 0.25s ease;
+    }
+
+    #todo-list li:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #todo-list li.done {
+      opacity: 0.45;
+      text-decoration: line-through;
+    }
+
+    #todo-list input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      border: 2px solid var(--ink-dim);
+      border-radius: 7px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    #todo-list input[type="checkbox"]:checked {
+      background: linear-gradient(135deg, var(--accent), #FFA24A);
+      border-color: transparent;
+    }
+
+    #todo-list input[type="checkbox"]:checked::after {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 2px;
+      width: 5px;
+      height: 10px;
+      border: solid #14151C;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    #todo-list button {
+      margin-left: auto;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      color: var(--ink-dim);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+    }
+
+    #todo-list button:hover {
+      background: rgba(255, 90, 90, 0.15);
+      border-color: rgba(255, 90, 90, 0.4);
+      color: #FF8A8A;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    #task-count {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink-dim);
+    }
+
+    #clear-btn {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    #clear-btn:hover {
+      text-decoration: underline;
+    }
